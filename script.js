@@ -207,4 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Atualiza o contador ao carregar a página
     updateCartCount();
   });
+
+  mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity}`;
+
   
