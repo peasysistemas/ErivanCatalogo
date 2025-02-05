@@ -33,6 +33,7 @@
           <h2>Camiseta Estilosa</h2>
           <p>Código: <span class="codigo">001</span></p>
           <p>Camiseta confortável e moderna, perfeita para o dia a dia.</p>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </div>
 
@@ -43,6 +44,7 @@
           <h2>Faca Afiada</h2>
           <p>Código: <span class="codigo">002</span></p>
           <p>Faca de alta qualidade para uso doméstico.</p>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </div>
 
@@ -53,6 +55,7 @@
           <h2>Luminária de Mesa</h2>
           <p>Código: <span class="codigo">003</span></p>
           <p>Luminária elegante para iluminar seu espaço com estilo.</p>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </div>
 
@@ -63,6 +66,7 @@
           <h2>Fone de Ouvido Bluetooth</h2>
           <p>Código: <span class="codigo">004</span></p>
           <p>Fone de ouvido sem fio com ótima qualidade de som.</p>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </div>
     </section>
@@ -72,9 +76,26 @@
     <p>&copy; 2025 Catálogo de Produtos. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Modal para ampliação de imagem -->
+  <!-- Modal de ampliação de imagem -->
   <div id="modal" class="modal">
     <img id="modal-img" src="" alt="Imagem Ampliada">
+  </div>
+
+  <!-- Modal do carrinho -->
+  <div id="cartModal" class="modal-cart">
+    <div class="cart-content">
+      <h2>Adicionar ao Carrinho</h2>
+      <div class="product-info">
+        <img id="cartProductImage" src="" alt="Imagem do Produto">
+        <div id="cartProductName"></div>
+      </div>
+      <label for="quantity">Quantidade:</label>
+      <input type="number" id="quantity" min="1" value="1">
+      <div class="cart-buttons">
+        <button id="confirmCart">Confirmar</button>
+        <button id="cancelCart">Cancelar</button>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

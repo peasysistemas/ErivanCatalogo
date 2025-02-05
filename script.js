@@ -59,15 +59,56 @@ document.addEventListener("DOMContentLoaded", function () {
     const modalImg = document.getElementById("modal-img");
   
     imagensProdutos.forEach(img => {
+      // Clique na imagem para ampliar
       img.addEventListener("click", function () {
         modalImg.src = this.src;      // Define a imagem clicada no modal
         modal.style.display = "flex"; // Exibe o modal com display flex para centralização
       });
     });
   
-    // Fecha o modal ao clicar em qualquer lugar dele
+    // Fecha o modal de imagem ao clicar em qualquer lugar dele
     modal.addEventListener("click", function () {
       modal.style.display = "none";
+    });
+  
+    // --- Função de adicionar ao carrinho ---
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    const cartModal = document.getElementById("cartModal");
+    const cartProductImage = document.getElementById("cartProductImage");
+    const cartProductName = document.getElementById("cartProductName");
+    const quantityInput = document.getElementById("quantity");
+    const confirmCart = document.getElementById("confirmCart");
+    const cancelCart = document.getElementById("cancelCart");
+  
+    addToCartButtons.forEach(btn => {
+      btn.addEventListener("click", function (e) {
+        // Evita que outros eventos sejam acionados (por exemplo, se houver cliques na imagem)
+        e.stopPropagation();
+        // Obtém o produto associado ao botão
+        const produtoElement = this.closest(".produto");
+        const productImgSrc = produtoElement.querySelector("img").src;
+        const productName = produtoElement.querySelector("h2").textContent;
+        
+        // Preenche os dados do modal do carrinho
+        cartProductImage.src = productImgSrc;
+        cartProductName.textContent = productName;
+        quantityInput.value = 1; // Valor padrão
+        
+        // Exibe o modal do carrinho
+        cartModal.style.display = "flex";
+      });
+    });
+  
+    // Ao confirmar, você pode enviar os dados para o carrinho (aqui, apenas um exemplo com alerta)
+    confirmCart.addEventListener("click", function () {
+      const quantidade = quantityInput.value;
+      alert(`Produto "${cartProductName.textContent}" adicionado ao carrinho!\nQuantidade: ${quantidade}`);
+      cartModal.style.display = "none";
+    });
+  
+    // Cancelar ou fechar o modal do carrinho
+    cancelCart.addEventListener("click", function () {
+      cartModal.style.display = "none";
     });
   });
   
