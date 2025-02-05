@@ -192,7 +192,7 @@ document.addEventListener("DOMContentLoaded", function () {
         mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity}`;
       });
       // Exemplo de número do WhatsApp do administrador (altere conforme necessário)
-      const adminWhatsApp = "5511999999999";
+      const adminWhatsApp = "5584981331401";
       const url = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${encodeURIComponent(mensagem)}`;
   
       // Opcional: limpar o carrinho após finalizar o pedido
