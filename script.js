@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
         itemDiv.classList.add("cart-item");
         itemDiv.innerHTML = `
           <img src="${item.image}" alt="${item.name}" width="50">
-          <span>${item.name} (Qtd: ${item.quantity})</span>
+          <span>Código: ${item.code} | ${item.name} (Qtd: ${item.quantity})</span>
           <button data-index="${index}" class="remove-item">Remover</button>
         `;
         cartItemsContainer.appendChild(itemDiv);
@@ -186,13 +186,13 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Seu carrinho está vazio!");
         return;
       }
-      // Constrói a mensagem do pedido
+      // Constrói a mensagem do pedido incluindo o código do produto
       let mensagem = "Olá, gostaria de fazer o pedido:\n";
       cart.forEach(item => {
-        mensagem += `\n*${item.name}* - Quantidade: ${item.quantity}`;
+        mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity}`;
       });
       // Exemplo de número do WhatsApp do administrador (altere conforme necessário)
-      const adminWhatsApp = "5584981331401";
+      const adminWhatsApp = "5511999999999";
       const url = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${encodeURIComponent(mensagem)}`;
   
       // Opcional: limpar o carrinho após finalizar o pedido
