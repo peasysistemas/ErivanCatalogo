@@ -11,6 +11,8 @@
     <h1>Catálogo de Produtos Erivan</h1>
     <div class="barra-pesquisa">
       <input type="text" id="pesquisa" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
+      <!-- Botão para visualizar o carrinho -->
+      <button id="viewCart">Ver Carrinho (<span id="cartCount">0</span>)</button>
     </div>
   </header>
 
@@ -81,7 +83,7 @@
     <img id="modal-img" src="" alt="Imagem Ampliada">
   </div>
 
-  <!-- Modal do carrinho -->
+  <!-- Modal para adicionar produto ao carrinho (definir quantidade) -->
   <div id="cartModal" class="modal-cart">
     <div class="cart-content">
       <h2>Adicionar ao Carrinho</h2>
@@ -94,6 +96,18 @@
       <div class="cart-buttons">
         <button id="confirmCart">Confirmar</button>
         <button id="cancelCart">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para visualizar o carrinho -->
+  <div id="cartViewModal" class="modal-cart">
+    <div class="cart-content">
+      <h2>Carrinho</h2>
+      <div id="cartItems"></div>
+      <div class="cart-buttons">
+        <button id="finalizePurchase">Finalizar Compra</button>
+        <button id="closeCartView">Fechar</button>
       </div>
     </div>
   </div>

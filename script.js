@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // --- Filtro de produtos ---
+    // ---------- Função de Filtro de Produtos ----------
     const barraPesquisa = document.getElementById("pesquisa");
     const botoesCategorias = document.querySelectorAll(".categoria-btn");
     const produtos = document.querySelectorAll(".produto");
@@ -10,12 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     mensagemSemResultados.style.marginTop = "20px";
     document.querySelector("main").appendChild(mensagemSemResultados);
   
-    // Função para filtrar produtos
     function filtrarProdutos() {
       const termo = barraPesquisa.value.toLowerCase();
-      const categoriaAtiva =
-        document.querySelector(".categoria-btn.ativo")?.getAttribute("data-categoria") || "todos";
-  
+      const categoriaAtiva = document.querySelector(".categoria-btn.ativo")?.getAttribute("data-categoria") || "todos";
       let produtosVisiveis = 0;
   
       produtos.forEach(produto => {
@@ -37,10 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
       mensagemSemResultados.style.display = produtosVisiveis === 0 ? "block" : "none";
     }
   
-    // Evento de pesquisa
     barraPesquisa.addEventListener("input", filtrarProdutos);
-  
-    // Evento de clique nos botões de categoria
     botoesCategorias.forEach(botao => {
       botao.addEventListener("click", function () {
         botoesCategorias.forEach(btn => btn.classList.remove("ativo"));
@@ -48,30 +42,25 @@ document.addEventListener("DOMContentLoaded", function () {
         filtrarProdutos();
       });
     });
-  
-    // Inicializar com todos os produtos visíveis
     filtrarProdutos();
   
-    // --- Função de ampliação de imagem ---
-    // Seleciona todas as imagens dos produtos
+    // ---------- Função de Ampliação de Imagem ----------
     const imagensProdutos = document.querySelectorAll(".produto img");
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modal-img");
   
     imagensProdutos.forEach(img => {
-      // Clique na imagem para ampliar
       img.addEventListener("click", function () {
-        modalImg.src = this.src;      // Define a imagem clicada no modal
-        modal.style.display = "flex"; // Exibe o modal com display flex para centralização
+        modalImg.src = this.src;
+        modal.style.display = "flex";
       });
     });
   
-    // Fecha o modal de imagem ao clicar em qualquer lugar dele
     modal.addEventListener("click", function () {
       modal.style.display = "none";
     });
   
-    // --- Função de adicionar ao carrinho ---
+    // ---------- Função de Adicionar ao Carrinho (Definir Quantidade) ----------
     const addToCartButtons = document.querySelectorAll(".add-to-cart");
     const cartModal = document.getElementById("cartModal");
     const cartProductImage = document.getElementById("cartProductImage");
@@ -80,35 +69,142 @@ document.addEventListener("DOMContentLoaded", function () {
     const confirmCart = document.getElementById("confirmCart");
     const cancelCart = document.getElementById("cancelCart");
   
+    // Variável para armazenar o item atual (usado para confirmar a adição)
+    let currentProduct = {};
+  
     addToCartButtons.forEach(btn => {
       btn.addEventListener("click", function (e) {
-        // Evita que outros eventos sejam acionados (por exemplo, se houver cliques na imagem)
         e.stopPropagation();
-        // Obtém o produto associado ao botão
         const produtoElement = this.closest(".produto");
         const productImgSrc = produtoElement.querySelector("img").src;
         const productName = produtoElement.querySelector("h2").textContent;
-        
-        // Preenche os dados do modal do carrinho
+        const productCode = produtoElement.getAttribute("data-codigo");
+  
+        // Armazena os dados do produto atual
+        currentProduct = {
+          code: productCode,
+          name: productName,
+          image: productImgSrc
+        };
+  
         cartProductImage.src = productImgSrc;
         cartProductName.textContent = productName;
-        quantityInput.value = 1; // Valor padrão
-        
-        // Exibe o modal do carrinho
+        quantityInput.value = 1;
         cartModal.style.display = "flex";
       });
     });
   
-    // Ao confirmar, você pode enviar os dados para o carrinho (aqui, apenas um exemplo com alerta)
     confirmCart.addEventListener("click", function () {
-      const quantidade = quantityInput.value;
-      alert(`Produto "${cartProductName.textContent}" adicionado ao carrinho!\nQuantidade: ${quantidade}`);
+      const quantidade = parseInt(quantityInput.value);
+      if (quantidade < 1) return; // Validação mínima
+  
+      // Recupera o carrinho do localStorage (se houver)
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  
+      // Verifica se o produto já existe no carrinho (pelo código)
+      const index = cart.findIndex(item => item.code === currentProduct.code);
+      if (index > -1) {
+        // Atualiza a quantidade do produto existente
+        cart[index].quantity += quantidade;
+      } else {
+        // Adiciona novo produto ao carrinho
+        cart.push({ ...currentProduct, quantity: quantidade });
+      }
+  
+      // Salva o carrinho atualizado
+      localStorage.setItem("cart", JSON.stringify(cart));
+  
+      // Atualiza o contador do carrinho
+      updateCartCount();
       cartModal.style.display = "none";
     });
   
-    // Cancelar ou fechar o modal do carrinho
     cancelCart.addEventListener("click", function () {
       cartModal.style.display = "none";
     });
+  
+    // ---------- Funções para Visualizar e Gerenciar o Carrinho ----------
+    const viewCartButton = document.getElementById("viewCart");
+    const cartViewModal = document.getElementById("cartViewModal");
+    const cartItemsContainer = document.getElementById("cartItems");
+    const finalizePurchase = document.getElementById("finalizePurchase");
+    const closeCartView = document.getElementById("closeCartView");
+    const cartCountSpan = document.getElementById("cartCount");
+  
+    // Atualiza o contador de itens no carrinho
+    function updateCartCount() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCountSpan.textContent = total;
+    }
+  
+    // Exibe os itens do carrinho no modal de visualização
+    function renderCartItems() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cartItemsContainer.innerHTML = "";
+      if (cart.length === 0) {
+        cartItemsContainer.textContent = "Seu carrinho está vazio.";
+        return;
+      }
+      cart.forEach((item, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("cart-item");
+        itemDiv.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="50">
+          <span>${item.name} (Qtd: ${item.quantity})</span>
+          <button data-index="${index}" class="remove-item">Remover</button>
+        `;
+        cartItemsContainer.appendChild(itemDiv);
+      });
+  
+      // Adiciona funcionalidade para remover item
+      document.querySelectorAll(".remove-item").forEach(btn => {
+        btn.addEventListener("click", function () {
+          const index = this.getAttribute("data-index");
+          let cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.splice(index, 1);
+          localStorage.setItem("cart", JSON.stringify(cart));
+          updateCartCount();
+          renderCartItems();
+        });
+      });
+    }
+  
+    viewCartButton.addEventListener("click", function () {
+      renderCartItems();
+      cartViewModal.style.display = "flex";
+    });
+  
+    closeCartView.addEventListener("click", function () {
+      cartViewModal.style.display = "none";
+    });
+  
+    // ---------- Finalizar Compra e Enviar Pedido para WhatsApp ----------
+    finalizePurchase.addEventListener("click", function () {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+      }
+      // Constrói a mensagem do pedido
+      let mensagem = "Olá, gostaria de fazer o pedido:\n";
+      cart.forEach(item => {
+        mensagem += `\n*${item.name}* - Quantidade: ${item.quantity}`;
+      });
+      // Exemplo de número do WhatsApp do administrador (altere conforme necessário)
+      const adminWhatsApp = "5584981331401";
+      const url = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+  
+      // Opcional: limpar o carrinho após finalizar o pedido
+      localStorage.removeItem("cart");
+      updateCartCount();
+      cartViewModal.style.display = "none";
+  
+      // Abre o WhatsApp com a mensagem
+      window.open(url, "_blank");
+    });
+  
+    // Atualiza o contador ao carregar a página
+    updateCartCount();
   });
   
