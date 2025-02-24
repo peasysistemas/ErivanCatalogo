@@ -5,6 +5,116 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Painel de Administração</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos básicos para o painel */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #001574;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+    nav {
+      margin-top: 10px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    main {
+      padding: 20px;
+    }
+    .form-produto, .lista-produtos {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    .form-produto h2, .lista-produtos h2 {
+      margin-top: 0;
+    }
+    .form-produto label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .form-produto input, .form-produto textarea, .form-produto select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    .form-produto button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .form-produto button:hover {
+      background-color: #218838;
+    }
+    .produto-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background-color: #f9f9f9;
+    }
+    .produto-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .produto-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+    .produto-item p {
+      margin: 5px 0;
+      color: #555;
+    }
+    .produto-item button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .produto-item button:nth-child(1) {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .produto-item button:nth-child(1):hover {
+      background-color: #0056b3;
+    }
+    .produto-item button:nth-child(2) {
+      background-color: #dc3545;
+      color: #fff;
+    }
+    .produto-item button:nth-child(2):hover {
+      background-color: #c82333;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -35,7 +145,6 @@
           <option value="facas">Facas</option>
           <option value="casa">Casa</option>
           <option value="eletronicos">Eletrônicos</option>
-          <option value="itens">itens</option>
         </select>
         
         <label for="subcategoria">Subcategoria (separadas por vírgula):</label>
@@ -60,27 +169,4 @@
 
   <script type="module" src="painel.js"></script>
 </body>
-<script type="module">
-    // Importar as coisas do Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-    import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-  
-    // Colocar as credenciais que você anotou
-    const firebaseConfig = {
-      apiKey: "AIzaSyAS4Qwbn7UECeIenN41u-0uWayqGMkDWzg",
-      authDomain: "bancocatalogo-3a5ef.firebaseapp.com",
-      projectId: "bancocatalogo-3a5ef",
-      storageBucket: "bancocatalogo-3a5ef.firebasestorage.app",
-      messagingSenderId: "604767753747",
-      appId: "1:604767753747:web:7fb94058496da8dcfa91e6",
-      measurementId: "G-VL0MSDF5ER",
-    };
-  
-    // Iniciar o Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-  
-    // Deixar o banco de dados disponível para outros scripts
-    window.db = db;
-  </script>
 </html>

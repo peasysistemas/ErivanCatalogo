@@ -3,12 +3,13 @@ import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, g
 
 // Configuração do Firebase
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_AUTH_DOMAIN",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_STORAGE_BUCKET",
-  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-  appId: "SEU_APP_ID"
+    apiKey: "AIzaSyAS4Qwbn7UECeIenN41u-0uWayqGMkDWzg",
+    authDomain: "bancocatalogo-3a5ef.firebaseapp.com",
+    projectId: "bancocatalogo-3a5ef",
+    storageBucket: "bancocatalogo-3a5ef.firebasestorage.app",
+    messagingSenderId: "604767753747",
+    appId: "1:604767753747:web:7fb94058496da8dcfa91e6",
+    measurementId: "G-VL0MSDF5ER",
 };
 
 // Inicialize o Firebase
@@ -22,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para carregar e renderizar os produtos
   async function carregarProdutos() {
     const querySnapshot = await getDocs(collection(db, "produtos"));
-    produtosList.innerHTML = "";
+    produtosList.innerHTML = ""; // Limpa o conteúdo atual
+
     querySnapshot.forEach((doc) => {
       const produto = doc.data();
       const produtoDiv = document.createElement("div");
@@ -63,8 +65,8 @@ document.addEventListener("DOMContentLoaded", function () {
       await addDoc(collection(db, "produtos"), produto);
     }
 
-    carregarProdutos();
-    produtoForm.reset();
+    carregarProdutos(); // Atualiza a lista de produtos
+    produtoForm.reset(); // Limpa o formulário
   });
 
   // Função para editar produto
@@ -87,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Função para excluir produto
   window.excluirProduto = async function (id) {
     await deleteDoc(doc(db, "produtos", id));
-    carregarProdutos();
+    carregarProdutos(); // Atualiza a lista de produtos
   };
 
   // Carregar produtos ao iniciar a página
