@@ -11,7 +11,6 @@
     <h1>Catálogo de Produtos Erivan</h1>
     <div class="barra-pesquisa">
       <input type="text" id="pesquisa" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
-      <!-- Botão para visualizar o carrinho -->
       <button id="viewCart">Ver Carrinho (<span id="cartCount">0</span>)</button>
     </div>
   </header>
@@ -19,58 +18,20 @@
   <main>
     <!-- Seção de Categorias -->
     <nav class="categorias">
-      <button class="categoria-btn" data-categoria="todos" aria-label="Mostrar todos os produtos">Todos</button>
-      <button class="categoria-btn" data-categoria="roupas" aria-label="Filtrar por roupas">Roupas</button>
-      <button class="categoria-btn" data-categoria="facas" aria-label="Filtrar por facas">Facas</button>
-      <button class="categoria-btn" data-categoria="casa" aria-label="Filtrar por produtos para casa">Casa</button>
-      <button class="categoria-btn" data-categoria="eletronicos" aria-label="Filtrar por eletrônicos">Eletrônicos</button>
+      <button class="categoria-btn" data-categoria="todos">Todos</button>
+      <button class="categoria-btn" data-categoria="roupas">Roupas</button>
+      <button class="categoria-btn" data-categoria="facas">Facas</button>
+      <button class="categoria-btn" data-categoria="casa">Casa</button>
+      <button class="categoria-btn" data-categoria="eletronicos">Eletrônicos</button>
+      <select id="subcategoria">
+        <option value="">Todas as Subcategorias</option>
+        <!-- Opções serão preenchidas dinamicamente -->
+      </select>
     </nav>
 
     <!-- Lista de Produtos -->
     <section class="produtos">
-      <!-- Produto 1 -->
-      <div class="produto" data-categoria="roupas" data-codigo="001">
-        <img src="Image/camisa1.jpg" alt="Camiseta Estilosa">
-        <div class="descricao">
-          <h2>Camiseta Estilosa</h2>
-          <p>Código: <span class="codigo">001</span></p>
-          <p>Camiseta confortável e moderna, perfeita para o dia a dia.</p>
-          <button class="add-to-cart">Adicionar ao Carrinho</button>
-        </div>
-      </div>
-
-      <!-- Produto 2 -->
-      <div class="produto" data-categoria="facas" data-codigo="002">
-        <img src="Image/faca.jpg" alt="Faca Afiada">
-        <div class="descricao">
-          <h2>Faca Afiada</h2>
-          <p>Código: <span class="codigo">002</span></p>
-          <p>Faca de alta qualidade para uso doméstico.</p>
-          <button class="add-to-cart">Adicionar ao Carrinho</button>
-        </div>
-      </div>
-
-      <!-- Produto 3 -->
-      <div class="produto" data-categoria="casa" data-codigo="003">
-        <img src="Image/luminaria.jpg" alt="Luminária de Mesa">
-        <div class="descricao">
-          <h2>Luminária de Mesa</h2>
-          <p>Código: <span class="codigo">003</span></p>
-          <p>Luminária elegante para iluminar seu espaço com estilo.</p>
-          <button class="add-to-cart">Adicionar ao Carrinho</button>
-        </div>
-      </div>
-
-      <!-- Produto 4 -->
-      <div class="produto" data-categoria="eletronicos" data-codigo="004">
-        <img src="Image/fone.jpg" alt="Fone de Ouvido Bluetooth">
-        <div class="descricao">
-          <h2>Fone de Ouvido Bluetooth</h2>
-          <p>Código: <span class="codigo">004</span></p>
-          <p>Fone de ouvido sem fio com ótima qualidade de som.</p>
-          <button class="add-to-cart">Adicionar ao Carrinho</button>
-        </div>
-      </div>
+      <!-- Produtos serão carregados dinamicamente aqui -->
     </section>
   </main>
 
