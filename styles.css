@@ -293,3 +293,10 @@ footer {
     max-width: 300px;
   }
 }
+.subcategoria-select {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
+}

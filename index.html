@@ -23,6 +23,7 @@
       <button class="categoria-btn" data-categoria="facas">Facas</button>
       <button class="categoria-btn" data-categoria="casa">Casa</button>
       <button class="categoria-btn" data-categoria="eletronicos">Eletrônicos</button>
+      <button class="categoria-btn" data-categoria="itens">itens</button>
       <select id="subcategoria">
         <option value="">Todas as Subcategorias</option>
         <!-- Opções serão preenchidas dinamicamente -->
@@ -73,6 +74,29 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
+<script type="module">
+  // Importar as coisas do Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
+
+  // Colocar as credenciais que você anotou
+  const firebaseConfig = {
+    apiKey: "AIzaSyAS4Qwbn7UECeIenN41u-0uWayqGMkDWzg",
+    authDomain: "bancocatalogo-3a5ef.firebaseapp.com",
+    projectId: "bancocatalogo-3a5ef",
+    storageBucket: "bancocatalogo-3a5ef.firebasestorage.app",
+    messagingSenderId: "604767753747",
+    appId: "1:604767753747:web:7fb94058496da8dcfa91e6",
+    measurementId: "G-VL0MSDF5ER",
+  };
+
+  // Iniciar o Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Deixar o banco de dados disponível para outros scripts
+  window.db = db;
+</script>
 </html>
