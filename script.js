@@ -1,62 +1,84 @@
 // Variável para armazenar o produto atual (usado no modal do carrinho)
 let currentProduct = {};
 
-// Selecionar elementos do modal do carrinho
-const cartModal = document.getElementById("cartModal");
-const cartProductImage = document.getElementById("cartProductImage");
-const cartProductName = document.getElementById("cartProductName");
-const quantityInput = document.getElementById("quantity");
-const confirmCart = document.getElementById("confirmCart");
-const cancelCart = document.getElementById("cancelCart");
+// Selecionar elementos do modal de subcategoria
+const subcategoriaModal = document.getElementById("subcategoriaModal");
+const modalSubcategoriaImage = document.getElementById("modalSubcategoriaImage");
+const modalProductDescription = document.getElementById("modalProductDescription");
+const closeModal = document.querySelector(".close-modal");
+const addToCartFromModal = document.getElementById("addToCartFromModal");
+const modalQuantity = document.getElementById("modalQuantity");
 
-// Selecionar elementos do modal de visualização do carrinho
-const cartViewModal = document.getElementById("cartViewModal");
-const cartItemsContainer = document.getElementById("cartItems");
-const finalizePurchase = document.getElementById("finalizePurchase");
-const closeCartView = document.getElementById("closeCartView");
+// Mensagem de feedback
+const feedbackMessage = document.getElementById("feedbackMessage");
 
-// Função para aplicar event listeners aos botões de adicionar ao carrinho
-function aplicarEventListeners() {
-  const addToCartButtons = document.querySelectorAll(".add-to-cart");
-  addToCartButtons.forEach((btn) => {
-    btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      const produtoElement = this.closest(".produto");
-      const productImgSrc = produtoElement.querySelector("img").src;
-      const productName = produtoElement.querySelector("h2").textContent;
-      const productCode = produtoElement.getAttribute("data-codigo");
-      const productPrice = parseFloat(
-        produtoElement.querySelector(".preco").textContent.replace("Preço: R$ ", "")
-      );
-      const subcategoriaSelecionada = produtoElement.querySelector(".subcategoria-select").value;
+// Objeto com as fotos das subcategorias
+const fotosSubcategorias = {
+  "001": {
+    kitcom2: "./Image/photo_3_2025-02-25_15-21-36.jpg",
+    kitcom3: "./Image/photo_4_2025-02-25_15-21-36.jpg",
+  },
+  "002": {
+    cozinha: "https://via.placeholder.com/200?text=Faca+de+Cozinha",
+    campo: "https://via.placeholder.com/200?text=Faca+de+Campo",
+  },
+  "003": {
+    audio: "https://via.placeholder.com/200?text=Fone+Bluetooth",
+    acessorios: "https://via.placeholder.com/200?text=Case+Fone",
+  },
+};
 
-      // Armazena os dados do produto atual
-      currentProduct = {
-        code: productCode,
-        name: productName,
-        image: productImgSrc,
-        price: productPrice,
-        subcategoria: subcategoriaSelecionada,
-      };
-
-      // Exibe o modal para definir a quantidade
-      cartProductImage.src = productImgSrc;
-      cartProductName.textContent = productName;
-      quantityInput.value = 1;
-      cartModal.style.display = "flex";
-    });
-  });
+// Função para exibir mensagem de feedback
+function showFeedbackMessage(message, isError = false) {
+  feedbackMessage.textContent = message;
+  feedbackMessage.classList.add(isError ? "error" : "success");
+  feedbackMessage.style.display = "block";
+  setTimeout(() => {
+    feedbackMessage.style.display = "none";
+    feedbackMessage.classList.remove(isError ? "error" : "success");
+  }, 3000);
 }
 
-// Event listener para confirmar a adição ao carrinho
-confirmCart.addEventListener("click", function () {
-  const quantidade = parseInt(quantityInput.value);
+// Função para abrir o modal da subcategoria
+function abrirModalSubcategoria(produtoElement, subcategoria) {
+  const codigoProduto = produtoElement.getAttribute("data-codigo");
+
+  if (fotosSubcategorias[codigoProduto] && fotosSubcategorias[codigoProduto][subcategoria]) {
+    modalSubcategoriaImage.src = fotosSubcategorias[codigoProduto][subcategoria];
+    modalProductDescription.textContent = produtoElement.querySelector("p").textContent;
+    subcategoriaModal.style.display = "flex";
+
+    // Armazena os dados do produto atual
+    currentProduct = {
+      code: codigoProduto,
+      name: produtoElement.querySelector("h2").textContent,
+      image: fotosSubcategorias[codigoProduto][subcategoria],
+      price: parseFloat(produtoElement.querySelector(".preco").textContent.replace("Preço: R$ ", "")),
+      subcategoria: subcategoria,
+    };
+  } else {
+    showFeedbackMessage("Imagem não encontrada para esta subcategoria.", true);
+  }
+}
+
+// Adicionar event listener para os botões de subcategoria
+document.querySelectorAll(".subcategoria-btn").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const produtoElement = this.closest(".produto");
+    const subcategoria = this.getAttribute("data-subcategoria");
+    abrirModalSubcategoria(produtoElement, subcategoria);
+  });
+});
+
+// Event listener para o botão "Adicionar ao Carrinho" no modal
+addToCartFromModal.addEventListener("click", function () {
+  const quantidade = parseInt(modalQuantity.value);
   if (quantidade < 1) {
-    alert("A quantidade deve ser pelo menos 1.");
+    showFeedbackMessage("A quantidade deve ser pelo menos 1.", true);
     return;
   }
 
-  // Recupera o carrinho do localStorage (se houver)
+  // Adiciona o produto ao carrinho com a quantidade selecionada
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
   // Verifica se o produto já existe no carrinho (pelo código e subcategoria)
@@ -76,15 +98,22 @@ confirmCart.addEventListener("click", function () {
 
   // Atualiza o contador do carrinho
   updateCartCount();
-  cartModal.style.display = "none";
+  subcategoriaModal.style.display = "none";
 
   // Feedback visual
-  alert("Produto adicionado ao carrinho!");
+  showFeedbackMessage("Produto adicionado ao carrinho!");
 });
 
-// Event listener para cancelar a adição ao carrinho
-cancelCart.addEventListener("click", function () {
-  cartModal.style.display = "none";
+// Fechar o modal de subcategoria
+closeModal.addEventListener("click", function () {
+  subcategoriaModal.style.display = "none";
+});
+
+// Fechar o modal ao clicar fora da imagem
+window.addEventListener("click", function (e) {
+  if (e.target === subcategoriaModal) {
+    subcategoriaModal.style.display = "none";
+  }
 });
 
 // Função para atualizar o contador de itens no carrinho
@@ -94,76 +123,5 @@ function updateCartCount() {
   document.getElementById("cartCount").textContent = total;
 }
 
-// Função para renderizar os itens do carrinho no modal
-function renderCartItems() {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cartItemsContainer.innerHTML = "";
-
-  if (cart.length === 0) {
-    cartItemsContainer.textContent = "Seu carrinho está vazio.";
-    return;
-  }
-
-  cart.forEach((item, index) => {
-    const itemDiv = document.createElement("div");
-    itemDiv.classList.add("cart-item");
-    itemDiv.innerHTML = `
-      <img src="${item.image}" alt="${item.name}" width="50">
-      <div>
-        <span>Código: ${item.code} | ${item.name} (Qtd: ${item.quantity}) - Subcategoria: ${item.subcategoria}</span>
-      </div>
-      <button onclick="removerItem(${index})">Remover</button>
-    `;
-    cartItemsContainer.appendChild(itemDiv);
-  });
-}
-
-// Função para remover um item do carrinho
-window.removerItem = function (index) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  updateCartCount();
-  renderCartItems();
-};
-
-// Event listener para visualizar o carrinho
-document.getElementById("viewCart").addEventListener("click", function () {
-  renderCartItems();
-  cartViewModal.style.display = "flex";
-});
-
-// Event listener para fechar o modal do carrinho
-closeCartView.addEventListener("click", function () {
-  cartViewModal.style.display = "none";
-});
-
-// Event listener para finalizar a compra e enviar pedido para o WhatsApp
-finalizePurchase.addEventListener("click", function () {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-  if (cart.length === 0) {
-    alert("Seu carrinho está vazio!");
-    return;
-  }
-
-  // Constrói a mensagem do pedido
-  let mensagem = "Olá, gostaria de fazer o pedido:\n";
-  cart.forEach((item) => {
-    mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity} - Subcategoria: ${item.subcategoria}`;
-  });
-
-  // Número do WhatsApp do administrador (altere conforme necessário)
-  const adminWhatsApp = "5584981331401"; // Substitua pelo número correto
-  const url = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${encodeURIComponent(mensagem)}`;
-
-  // Limpa o carrinho após finalizar o pedido
-  localStorage.removeItem("cart");
-  updateCartCount();
-  cartViewModal.style.display = "none";
-
-  // Abre o WhatsApp com a mensagem
-  window.open(url, "_blank");
-});
-
-// Aplicar event listeners ao carregar a página
-aplicarEventListeners();
+// Inicialização
+updateCartCount();
