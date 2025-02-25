@@ -3,36 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Produtos Erivan</title>
+  <meta name="description" content="Catálogo de Produtos - Encontre os melhores produtos em diversas categorias.">
+  <meta name="keywords" content="produtos, catálogo, compras, roupas, eletrônicos, casa, facas">
+  <meta name="author" content="Seu Nome">
+  <title>Catálogo de Produtos</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
-    <h1>Catálogo de Produtos Erivan</h1>
+    <div class="logoesq"></div>
+    <h1>Catálogo de Produtos</h1>
     <div class="barra-pesquisa">
       <input type="text" id="pesquisa" placeholder="Pesquisar produtos..." aria-label="Pesquisar produtos">
       <button id="viewCart">Ver Carrinho (<span id="cartCount">0</span>)</button>
     </div>
+    <div class="logodir"></div>
   </header>
 
   <main>
-    <!-- Seção de Categorias -->
     <nav class="categorias">
       <button class="categoria-btn" data-categoria="todos">Todos</button>
       <button class="categoria-btn" data-categoria="roupas">Roupas</button>
       <button class="categoria-btn" data-categoria="facas">Facas</button>
       <button class="categoria-btn" data-categoria="casa">Casa</button>
       <button class="categoria-btn" data-categoria="eletronicos">Eletrônicos</button>
-      <button class="categoria-btn" data-categoria="itens">itens</button>
+      <button class="categoria-btn" data-categoria="itens">Itens</button>
       <select id="subcategoria">
-        <option value="">Todas as Subcategorias</option>
-        <!-- Opções serão preenchidas dinamicamente -->
+        <option style="display: none;" value="">Todas as Subcategorias</option>
       </select>
     </nav>
 
-    <!-- Lista de Produtos -->
     <section class="produtos">
-      <!-- Produtos serão carregados dinamicamente aqui -->
+      <!-- Produto 1 -->
+      <div class="produto" data-categoria="roupas" data-subcategoria="camisetas,bermudas" data-codigo="001">
+        <img src="https://via.placeholder.com/200" alt="Camiseta Branca">
+        <div class="descricao">
+          <h2>Camiseta Branca</h2>
+          <p>Código: <span class="codigo">001</span></p>
+          <p>Camiseta básica de algodão.</p>
+          <p>Preço: R$ <span class="preco">29.99</span></p>
+          <select class="subcategoria-select">
+            <option value="">Escolha uma opção</option>
+            <option value="camisetas">Camisetas</option>
+            <option value="bermudas">Bermudas</option>
+          </select>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="produto" data-categoria="facas" data-subcategoria="cozinha,campo" data-codigo="002">
+        <img src="https://via.placeholder.com/200" alt="Faca de Cozinha">
+        <div class="descricao">
+          <h2>Faca de Cozinha</h2>
+          <p>Código: <span class="codigo">002</span></p>
+          <p>Faca afiada para uso doméstico.</p>
+          <p>Preço: R$ <span class="preco">49.99</span></p>
+          <select class="subcategoria-select">
+            <option value="">Escolha uma opção</option>
+            <option value="cozinha">Cozinha</option>
+            <option value="campo">Campo</option>
+          </select>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="produto" data-categoria="eletronicos" data-subcategoria="audio,acessorios" data-codigo="003">
+        <img src="https://via.placeholder.com/200" alt="Fone de Ouvido Bluetooth">
+        <div class="descricao">
+          <h2>Fone de Ouvido Bluetooth</h2>
+          <p>Código: <span class="codigo">003</span></p>
+          <p>Fone com cancelamento de ruído.</p>
+          <p>Preço: R$ <span class="preco">199.99</span></p>
+          <select class="subcategoria-select">
+            <option value="">Escolha uma opção</option>
+            <option value="audio">Áudio</option>
+            <option value="acessorios">Acessórios</option>
+          </select>
+          <button class="add-to-cart">Adicionar ao Carrinho</button>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -45,7 +96,7 @@
     <img id="modal-img" src="" alt="Imagem Ampliada">
   </div>
 
-  <!-- Modal para adicionar produto ao carrinho (definir quantidade) -->
+  <!-- Modal para adicionar produto ao carrinho -->
   <div id="cartModal" class="modal-cart">
     <div class="cart-content">
       <h2>Adicionar ao Carrinho</h2>
@@ -74,29 +125,6 @@
     </div>
   </div>
 
-  <script type="module" src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-<script type="module">
-  // Importar as coisas do Firebase
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, deleteDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
-
-  // Colocar as credenciais que você anotou
-  const firebaseConfig = {
-    apiKey: "AIzaSyAS4Qwbn7UECeIenN41u-0uWayqGMkDWzg",
-    authDomain: "bancocatalogo-3a5ef.firebaseapp.com",
-    projectId: "bancocatalogo-3a5ef",
-    storageBucket: "bancocatalogo-3a5ef.firebasestorage.app",
-    messagingSenderId: "604767753747",
-    appId: "1:604767753747:web:7fb94058496da8dcfa91e6",
-    measurementId: "G-VL0MSDF5ER",
-  };
-
-  // Iniciar o Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Deixar o banco de dados disponível para outros scripts
-  window.db = db;
-</script>
 </html>
