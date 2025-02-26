@@ -308,6 +308,7 @@ footer {
   border: 1px solid #ddd;
   width: 100%;
 }
+
 /* Estilo para os botões de subcategoria */
 .subcategorias {
   display: flex;
@@ -351,12 +352,14 @@ footer {
   text-align: center;
   max-width: 400px;
   width: 100%;
+  max-height: 80%;
+  overflow: hidden;
 }
 
 .modal-content img {
   max-width: 100%;
-  height: auto;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .close-modal {
@@ -366,6 +369,7 @@ footer {
   font-size: 24px;
   cursor: pointer;
 }
+
 /* Estilos para o campo de quantidade no modal */
 #modalQuantity {
   padding: 8px;
@@ -391,6 +395,7 @@ footer {
 #addToCartFromModal:hover {
   background-color: #218838;
 }
+
 /* Estilo para a mensagem de feedback */
 .feedback-message {
   display: none;
