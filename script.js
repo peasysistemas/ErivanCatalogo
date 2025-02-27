@@ -28,11 +28,11 @@ const fotosSubcategorias = {
     azulciano: "./Image/kit10vasilhassort.jpg",
   },
   "002": {
-    cozinha: "https://via.placeholder.com/200?text=Faca+de+Cozinha",
+    cromado: "./Image/canivetemetal.jpg",
     campo: "https://via.placeholder.com/200?text=Faca+de+Campo",
   },
   "003": {
-    audio: "https://via.placeholder.com/200?text=Fone+Bluetooth",
+    sortido: "./image/variasredes.jpg",
     acessorios: "https://via.placeholder.com/200?text=Case+Fone",
   },
 };
