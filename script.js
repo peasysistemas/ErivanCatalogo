@@ -21,8 +21,11 @@ const feedbackMessage = document.getElementById("feedbackMessage");
 // Objeto com as fotos das subcategorias
 const fotosSubcategorias = {
   "001": {
-    kitcom2: "./Image/photo_3_2025-02-25_15-21-36.jpg",
-    kitcom3: "./Image/photo_4_2025-02-25_15-21-36.jpg",
+    sortido: "./Image/kit10vasilhassort.jpg",
+    preto: "./Image/kit10vaspret.jpg",
+    vermelho: "./Image/kit10vasilhasverm.jpg",
+    roxo: "./Image/kit10vasilhasroxo.jpg",
+    azulciano: "./Image/kit10vasilhassort.jpg",
   },
   "002": {
     cozinha: "https://via.placeholder.com/200?text=Faca+de+Cozinha",
@@ -184,7 +187,7 @@ finalizePurchase.addEventListener("click", function () {
   // Constrói a mensagem do pedido
   let mensagem = "Olá, gostaria de fazer o pedido:\n";
   cart.forEach((item) => {
-    mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity} - Subcategoria: ${item.subcategoria}`;
+    mensagem += `\nCódigo: ${item.code} - *${item.name}* - Quantidade: ${item.quantity} - Tipo: ${item.subcategoria}`;
   });
 
   // Número do WhatsApp do administrador (altere conforme necessário)
