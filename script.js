@@ -18,24 +18,66 @@ const closeCartView = document.getElementById("closeCartView");
 // Mensagem de feedback
 const feedbackMessage = document.getElementById("feedbackMessage");
 
-// Objeto com as fotos das subcategorias
-const fotosSubcategorias = {
-  "001": {
-    sortido: "./Image/kit10vasilhassort.jpg",
-    preto: "./Image/kit10vaspret.jpg",
-    vermelho: "./Image/kit10vasilhasverm.jpg",
-    roxo: "./Image/kit10vasilhasroxo.jpg",
-    azulciano: "./Image/kit10vasilhassort.jpg",
-  },
-  "002": {
-    cromado: "./Image/canivetemetal.jpg",
-    campo: "https://via.placeholder.com/200?text=Faca+de+Campo",
-  },
-  "003": {
-    sortido: "./image/variasredes.jpg",
-    acessorios: "https://via.placeholder.com/200?text=Case+Fone",
-  },
-};
+// Variável para armazenar a categoria ativa
+let categoriaAtiva = "todos";
+
+// Selecionar elementos dos filtros
+const pesquisaInput = document.getElementById("pesquisa");
+const botoesCategoria = document.querySelectorAll(".categoria-btn");
+
+// Função principal de filtro
+function filtrarProdutos() {
+  const termoPesquisa = pesquisaInput.value.toLowerCase();
+  const produtos = document.querySelectorAll(".produto");
+  
+  produtos.forEach(produto => {
+    const nome = produto.querySelector("h2").textContent.toLowerCase();
+    const descricao = produto.querySelector("p").textContent.toLowerCase();
+    const codigo = produto.querySelector(".codigo").textContent.toLowerCase();
+    const categoriasProduto = produto.getAttribute("data-categoria").split(" ");
+
+    // Verifica correspondência com a pesquisa
+    const correspondePesquisa = termoPesquisa === "" || 
+                             nome.includes(termoPesquisa) || 
+                             descricao.includes(termoPesquisa) || 
+                             codigo.includes(termoPesquisa);
+    
+    // Verifica correspondência com a categoria
+    const correspondeCategoria = categoriaAtiva === "todos" || 
+                              categoriasProduto.includes(categoriaAtiva);
+
+    // Aplica os filtros combinados
+    produto.style.display = (correspondePesquisa && correspondeCategoria) 
+                          ? "block" 
+                          : "none";
+  });
+}
+
+// Evento para pesquisa por texto
+pesquisaInput.addEventListener("input", filtrarProdutos);
+
+// Eventos para filtro por categoria
+botoesCategoria.forEach(botao => {
+  botao.addEventListener("click", function() {
+    // Atualiza categoria ativa
+    categoriaAtiva = this.getAttribute("data-categoria");
+    
+    // Atualiza classe ativa visual
+    botoesCategoria.forEach(btn => btn.classList.remove("active"));
+    this.classList.add("active");
+    
+    // Aplica filtros
+    filtrarProdutos();
+  });
+});
+
+// Inicializa com "Todos" ativo
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelector('.categoria-btn[data-categoria="todos"]').classList.add("active");
+});
+
+
+
 
 // Função para exibir mensagem de feedback
 function showFeedbackMessage(message, isError = false) {
@@ -69,61 +111,208 @@ function abrirModalSubcategoria(produtoElement, subcategoria) {
     showFeedbackMessage("Imagem não encontrada para esta subcategoria.", true);
   }
 }
+// Objeto com as fotos das subcategorias
 
-// Adicionar event listener para os botões de subcategoria
-document.querySelectorAll(".subcategoria-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    const produtoElement = this.closest(".produto");
-    const subcategoria = this.getAttribute("data-subcategoria");
-    abrirModalSubcategoria(produtoElement, subcategoria);
+const fotosSubcategorias = {
+  "001": {
+    Metal: "Image/product/canivetemetal.jpg",
+  },
+  "002": {
+    Vermelho: "Image/product/fotorede.jpg",
+  },
+  "003": {
+    Sortido: "Image/product/kit talher de plasticocozinha.jpg",
+  },
+  "004": {
+    Sortidos: "Image/product/kit10vasilhas.jpg",
+    Roxo: "Image/product/kit10vasilhasroxo.jpg",
+    Vermelho: "Image/product/kit10vasilhasverm.jpg",
+    Preto: "Image/product/kit10vaspret.jpg",
+  },
+};
+
+// Função para renderizar os produtos
+function renderizarProdutos() {
+  const produtos = [
+    {
+      codigo: "001",
+      nome: "Canivete Metal",
+      descricao: "Canivete Metalico",
+      preco: "Consultar",
+      imagem: "Image/product/canivetemetal.jpg",
+      categorias: ["Ultensilios"],
+      subcategorias: ["Metal"],
+    },
+    {
+      codigo: "002",
+      nome: "Rede bucho de boi",
+      descricao: "Rede cores variadas",
+      preco: "Consultar",
+      imagem: "Image/product/fotorede.jpg",
+      categorias: ["Redes"],
+      subcategorias: ["Vermelho"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "004",
+      nome: "Kit 10 vasilhas",
+      descricao: "Kit com 10 vasilhas em cores variadas",
+      preco: "Consultar",
+      imagem: "Image/product/kit10vasilhas.jpg",
+      categorias: ["redes"],
+      subcategorias: ["Sortidos", "Roxo", "Vermelho", "Preto"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "003",
+      nome: "Kit talheres de cozinha de plastico",
+      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      preco: "Consultar",
+      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      categorias: ["Cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    // Adicione mais produtos aqui
+  ];
+
+  const produtosContainer = document.querySelector(".produtos");
+  produtosContainer.innerHTML = ""; // Limpa o conteúdo atual
+
+  produtos.forEach(produto => {
+    const produtoDiv = document.createElement("div");
+    produtoDiv.classList.add("produto");
+    produtoDiv.setAttribute("data-codigo", produto.codigo);
+    produtoDiv.setAttribute("data-categoria", produto.categorias.join(" "));
+
+    let subcategoriaButtons = produto.subcategorias.map(subcategoria => {
+      return `<button class="subcategoria-btn" data-subcategoria="${subcategoria}">${subcategoria}</button>`;
+    }).join("");
+
+    produtoDiv.innerHTML = `
+      <img src="${produto.imagem}" alt="${produto.nome}" class="produto-imagem">
+      <div class="descricao">
+        <h2>${produto.nome}</h2>
+        <p>Código: <span class="codigo">${produto.codigo}</span></p>
+        <p>${produto.descricao}</p>
+        <p>Preço: <span class="preco">${produto.preco}</span></p>
+        <div class="subcategorias">
+          ${subcategoriaButtons}
+        </div>
+      </div>
+    `;
+
+    produtosContainer.appendChild(produtoDiv);
   });
-});
 
-// Event listener para o botão "Adicionar ao Carrinho" no modal
-addToCartFromModal.addEventListener("click", function () {
-  const quantidade = parseInt(modalQuantity.value);
-  if (quantidade < 1) {
-    showFeedbackMessage("A quantidade deve ser pelo menos 1.", true);
-    return;
-  }
+  // Adicionar o evento de click nos botões de subcategoria
+  document.querySelectorAll(".subcategoria-btn").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const produtoElement = this.closest(".produto");
+      const subcategoria = this.getAttribute("data-subcategoria");
+      abrirModalSubcategoria(produtoElement, subcategoria);
+    });
+  });
+}
 
-  // Adiciona o produto ao carrinho com a quantidade selecionada
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  // Verifica se o produto já existe no carrinho (pelo código e subcategoria)
-  const index = cart.findIndex(
-    (item) => item.code === currentProduct.code && item.subcategoria === currentProduct.subcategoria
-  );
-  if (index > -1) {
-    // Atualiza a quantidade do produto existente
-    cart[index].quantity += quantidade;
-  } else {
-    // Adiciona novo produto ao carrinho
-    cart.push({ ...currentProduct, quantity: quantidade });
-  }
-
-  // Salva o carrinho atualizado
-  localStorage.setItem("cart", JSON.stringify(cart));
-
-  // Atualiza o contador do carrinho
-  updateCartCount();
-  subcategoriaModal.style.display = "none";
-
-  // Feedback visual
-  showFeedbackMessage("Produto adicionado ao carrinho!");
-});
-
-// Fechar o modal de subcategoria
-closeModal.addEventListener("click", function () {
-  subcategoriaModal.style.display = "none";
-});
-
-// Fechar o modal ao clicar fora da imagem
-window.addEventListener("click", function (e) {
-  if (e.target === subcategoriaModal) {
-    subcategoriaModal.style.display = "none";
-  }
-});
+// Chama a função para renderizar os produtos quando a página carrega
+renderizarProdutos();
 
 // Função para atualizar o contador de itens no carrinho
 function updateCartCount() {
@@ -176,6 +365,23 @@ closeCartView.addEventListener("click", function () {
   cartViewModal.style.display = "none";
 });
 
+// Função para fechar o modal ao clicar fora da área do conteúdo
+function fecharModalAoCliqueFora(event, modal) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Adiciona o evento de clique para fechar o modal quando clicar fora da área do conteúdo
+subcategoriaModal.addEventListener("click", function (event) {
+  fecharModalAoCliqueFora(event, subcategoriaModal);
+});
+
+cartViewModal.addEventListener("click", function (event) {
+  fecharModalAoCliqueFora(event, cartViewModal);
+});
+
+
 // Event listener para finalizar a compra e enviar pedido para o WhatsApp
 finalizePurchase.addEventListener("click", function () {
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -193,70 +399,38 @@ finalizePurchase.addEventListener("click", function () {
   // Número do WhatsApp do administrador (altere conforme necessário)
   const adminWhatsApp = "5584981331401"; // Substitua pelo número correto
   const url = `https://api.whatsapp.com/send?phone=${adminWhatsApp}&text=${encodeURIComponent(mensagem)}`;
+  window.open(url, "_blank");
 
-  // Limpa o carrinho após finalizar o pedido
+  // Limpa o carrinho após a compra
   localStorage.removeItem("cart");
   updateCartCount();
+  showFeedbackMessage("Pedido enviado com sucesso! Você será redirecionado ao WhatsApp.");
+});
+
+// Event listener para adicionar ao carrinho a partir do modal
+addToCartFromModal.addEventListener("click", function () {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let productInCart = cart.find(item => item.code === currentProduct.code && item.subcategoria === currentProduct.subcategoria);
+
+  if (productInCart) {
+    productInCart.quantity += parseInt(modalQuantity.value);
+  } else {
+    cart.push({
+      ...currentProduct,
+      quantity: parseInt(modalQuantity.value)
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
   cartViewModal.style.display = "none";
-
-  // Abre o WhatsApp com a mensagem
-  window.open(url, "_blank");
+  showFeedbackMessage("Produto adicionado ao carrinho.");
 });
 
-// Função para filtrar produtos por categoria
-function filtrarProdutosPorCategoria(categoria) {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach((produto) => {
-    const produtoCategoria = produto.getAttribute("data-categoria");
-
-    if (categoria === "todos") {
-      produto.style.display = "block"; // Mostra todos os produtos
-    } else {
-      if (produtoCategoria === categoria) {
-        produto.style.display = "block"; // Mostra produtos da categoria selecionada
-      } else {
-        produto.style.display = "none"; // Oculta produtos de outras categorias
-      }
-    }
-  });
-}
-
-// Função para filtrar produtos por texto (nome, código ou descrição)
-function filtrarProdutosPorTexto(termo) {
-  const produtos = document.querySelectorAll(".produto");
-
-  produtos.forEach((produto) => {
-    const nomeProduto = produto.querySelector("h2").textContent.toLowerCase();
-    const descricaoProduto = produto.querySelector("p").textContent.toLowerCase();
-    const codigoProduto = produto.querySelector(".codigo").textContent.toLowerCase();
-
-    // Verifica se o termo de pesquisa está no nome, descrição ou código
-    if (
-      nomeProduto.includes(termo) ||
-      descricaoProduto.includes(termo) ||
-      codigoProduto.includes(termo)
-    ) {
-      produto.style.display = "block"; // Mostra o produto
-    } else {
-      produto.style.display = "none"; // Oculta o produto
-    }
-  });
-}
-
-// Adicionar event listeners para os botões de categoria
-document.querySelectorAll(".categoria-btn").forEach((button) => {
-  button.addEventListener("click", function () {
-    const categoria = this.getAttribute("data-categoria");
-    filtrarProdutosPorCategoria(categoria);
-  });
+// Event listener para fechar o modal de subcategoria
+closeModal.addEventListener("click", function () {
+  subcategoriaModal.style.display = "none";
 });
 
-// Adicionar event listener para o campo de pesquisa
-document.getElementById("pesquisa").addEventListener("input", function () {
-  const termoPesquisa = this.value.trim().toLowerCase();
-  filtrarProdutosPorTexto(termoPesquisa);
-});
-
-// Inicialização
+// Atualiza o contador de itens no carrinho assim que a página carregar
 updateCartCount();
