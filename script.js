@@ -116,6 +116,7 @@ function abrirModalSubcategoria(produtoElement, subcategoria) {
 const fotosSubcategorias = {
   "001": {
     Metal: "Image/product/canivetemetal.jpg",
+    Madeira: "Image/product/canivetecabomadeira.jpg"
   },
   "002": {
     Vermelho: "Image/product/fotorede.jpg",
@@ -162,6 +163,25 @@ const fotosSubcategorias = {
     Bainha: "Image/product/capadecelcombainha.jpg",
     Bainha2: "Image/product/capadecelularcomcanivete.jpg",
   },
+  "010": {
+    Sortido: "Image/product/tapetesala.jpg",
+  },
+  "011": {
+    Sortido: "Image/product/passadeiradecozinha.jpg",
+  },
+  "012": {
+    Bege: "Image/product/capasofabege.jpg",
+    Azul: "Image/product/capasofaazul.jpg"
+  },
+  "013": {
+    Mod1: "Image/product/cadeirinhainfantil1.jpg",
+    Mod2: "Image/product/cadeirinhainfantil2.jpg",
+    Mod3: "Image/product/cadeirinhainfantil3.jpg",
+    Mod4: "Image/product/cadeirinhainfantil4.jpg"
+  },
+  "014": {
+    Sortido: "Image/product/fonesdeouvidosortidos.jpg",
+  },
 };
 
 // Função para renderizar os produtos
@@ -174,7 +194,7 @@ function renderizarProdutos() {
       preco: "Consultar",
       imagem: "Image/product/canivetemetal.jpg",
       categorias: ["Ultensilios"],
-      subcategorias: ["Metal"],
+      subcategorias: ["Metal", "Madeira"],
     },
     {
       codigo: "002",
@@ -200,7 +220,7 @@ function renderizarProdutos() {
       descricao: "Kit com 10 vasilhas em cores variadas",
       preco: "Consultar",
       imagem: "Image/product/kit10vasilhas.jpg",
-      categorias: ["redes"],
+      categorias: ["Plasticos"],
       subcategorias: ["Sortidos", "Roxo", "Vermelho", "Preto"],
     },
     {
@@ -209,7 +229,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha com 10 vasilhas",
       preco: "Consultar",
       imagem: "Image/product/kit10.jpg",
-      categorias: ["Cozinha"],
+      categorias: ["Plasticos"],
       subcategorias: ["Sortidos", "Sortidos2"],
     },
     {
@@ -218,7 +238,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha 5 peças",
       preco: "Consultar",
       imagem: "Image/product/kitcozinha5vazilhas.jpg",
-      categorias: ["Cozinha"],
+      categorias: ["Plasticos"],
       subcategorias: ["Kit1", "Kit2", "Kit3", "Kit4", "Kit5"],
     },
     {
@@ -227,7 +247,7 @@ function renderizarProdutos() {
       descricao: "Kit vasilha uso geral",
       preco: "Consultar",
       imagem: "Image/product/kitvazilhacom3und.jpg",
-      categorias: ["Cozinha"],
+      categorias: ["Plasticos"],
       subcategorias: ["Kitcom3", "Kitcom2",],
     },
     {
@@ -236,7 +256,7 @@ function renderizarProdutos() {
       descricao: "Redes de cores variadas",
       preco: "Consultar",
       imagem: "Image/product/variasredes.jpg",
-      categorias: ["Cozinha"],
+      categorias: ["Redes"],
       subcategorias: ["Sortido"],
     },
     {
@@ -249,48 +269,57 @@ function renderizarProdutos() {
       subcategorias: ["Simples", "Bainha", "Bainha2"],
     },
     {
-      codigo: "003",
-      nome: "Kit talheres de cozinha de plastico",
-      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      codigo: "010",
+      nome: "Tapete sala",
+      descricao: "Tapete de sala 2,00X2,40mt",
       preco: "Consultar",
-      imagem: "Image/product/kit talher de plasticocozinha.jpg",
+      imagem: "Image/product/tapetesala.jpg",
+      categorias: ["Ultensilios"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "011",
+      nome: "Kit passadeira cozinha",
+      descricao: "Conjunto de passadeira de cozinha",
+      preco: "Consultar",
+      imagem: "Image/product/passadeiradecozinha.jpg",
       categorias: ["Cozinha"],
       subcategorias: ["Sortido"],
     },
     {
-      codigo: "003",
-      nome: "Kit talheres de cozinha de plastico",
-      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      codigo: "012",
+      nome: "Kit Capa de sofá",
+      descricao: "Kit capa de sofá com 2  e 3 lugares",
       preco: "Consultar",
-      imagem: "Image/product/kit talher de plasticocozinha.jpg",
-      categorias: ["Cozinha"],
+      imagem: "Image/product/capasofaazul.jpg",
+      categorias: ["Ultensilios"],
+      subcategorias: ["Bege", "Azul"],
+    },
+    {
+      codigo: "013",
+      nome: "Cadeirinha suspensa infantil",
+      descricao: "Cadeirinha suspensa infantil diversas cores",
+      preco: "Consultar",
+      imagem: "Image/product/cadeirinhainfantil1.jpg",
+      categorias: ["Ultensilios"],
+      subcategorias: ["Mod1", "Mod2", "Mod3", "Mod4"],
+    },
+    {
+      codigo: "014",
+      nome: "Fone de ouvido com fio",
+      descricao: "Fone de ouvido com fio",
+      preco: "Consultar",
+      imagem: "Image/product/fonesdeouvidosortidos.jpg",
+      categorias: ["Eletronicos"],
       subcategorias: ["Sortido"],
     },
     {
-      codigo: "003",
-      nome: "Kit talheres de cozinha de plastico",
-      descricao: "Kit talheres de cozinha de Plastico sortidos.",
+      codigo: "015",
+      nome: "Fone de ouvido sem fio",
+      descricao: "Fone de ouvido sem fio",
       preco: "Consultar",
-      imagem: "Image/product/kit talher de plasticocozinha.jpg",
-      categorias: ["Cozinha"],
-      subcategorias: ["Sortido"],
-    },
-    {
-      codigo: "003",
-      nome: "Kit talheres de cozinha de plastico",
-      descricao: "Kit talheres de cozinha de Plastico sortidos.",
-      preco: "Consultar",
-      imagem: "Image/product/kit talher de plasticocozinha.jpg",
-      categorias: ["Cozinha"],
-      subcategorias: ["Sortido"],
-    },
-    {
-      codigo: "003",
-      nome: "Kit talheres de cozinha de plastico",
-      descricao: "Kit talheres de cozinha de Plastico sortidos.",
-      preco: "Consultar",
-      imagem: "Image/product/kit talher de plasticocozinha.jpg",
-      categorias: ["Cozinha"],
+      imagem: "Image/product/fonedeouvidosemfio.jpg",
+      categorias: ["Eletronicos"],
       subcategorias: ["Sortido"],
     },
     // Adicione mais produtos aqui
