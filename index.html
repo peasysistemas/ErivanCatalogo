@@ -20,15 +20,110 @@
   <main>
     <nav class="categorias">
       <button class="categoria-btn" data-categoria="todos">Todos</button>
-      <button class="categoria-btn" data-categoria="Plasticos">Plásticos</button>
-      <button class="categoria-btn" data-categoria="Cozinha">Cozinha</button>
-      <button class="categoria-btn" data-categoria="Redes">Redes</button>
-      <button class="categoria-btn" data-categoria="Eletronicos">Eletrônicos</button>
-      <button class="categoria-btn" data-categoria="Ultensilios">Ùltensilios</button>
+      <button class="categoria-btn" data-categoria="plasticos">Plásticos</button>
+      <button class="categoria-btn" data-categoria="cozinha">Itens para cozinha</button>
+      <button class="categoria-btn" data-categoria="facas">Facas/canivetes</button>
+      <button class="categoria-btn" data-categoria="rede">Redes</button>
+      <button class="categoria-btn" data-categoria="eletronicos">Eletrônicos</button>
+      <button class="categoria-btn" data-categoria="item">Itens variados</button>
+      <button class="categoria-btn" data-categoria="brinquedo">Brinquedos</button>
     </nav>
 
     <section class="produtos">
-      <!-- Os produtos serão adicionados dinamicamente aqui -->
+      <!-- Produto 1 -->
+      <div class="produto" data-categoria="plasticos" data-subcategoria="" data-codigo="001">
+        <img src="./Image/kit10vasilhas.jpg" alt="Kit Vasilhas" class="produto-imagem">
+        <div class="descricao">
+          <h2>Kit de vasilhas de plástico com 10 und.</h2>
+          <p>Código: <span class="codigo">001</span></p>
+          <p>Kit de vasilhas de plástico com 10 und.</p>
+          <p>Preço:<span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="sortido">Sortido</button>
+            <button class="subcategoria-btn" data-subcategoria="preto">preto</button>
+            <button class="subcategoria-btn" data-subcategoria="vermelho">vermelho</button>
+            <button class="subcategoria-btn" data-subcategoria="roxo">roxo</button>
+            <button class="subcategoria-btn" data-subcategoria="azulciano">Azul ciano</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 2 -->
+      <div class="produto" data-categoria="facas" data-subcategoria="" data-codigo="002">
+        <img src="./Image/canivetemetal.jpg" alt="Faca de Cozinha" class="produto-imagem">
+        <div class="descricao">
+          <h2>Canivete de metal</h2>
+          <p>Código: <span class="codigo">002</span></p>
+          <p>Canivete de metal para uso diversos.</p>
+          <p>Preço:<span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="cromado">Cromado</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Produto 3 -->
+      <div class="produto" data-categoria="plasticos" data-subcategoria="" data-codigo="003">
+        <img src="./Image/kit talher de plasticocozinha.jpg" alt="Fone de Ouvido Bluetooth" class="produto-imagem">
+        <div class="descricao">
+          <h2>Kit talheres de plástico</h2>
+          <p>Código: <span class="codigo">003</span></p>
+          <p>Pote com diversos talheres em cores variadas</p>
+          <p>Preço: R$ <span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="sortido">sortido</button>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 4 -->
+      <div class="produto" data-categoria="rede" data-subcategoria="" data-codigo="003">
+        <img src="./Image/fotorede.jpg" alt="Fone de Ouvido Bluetooth" class="produto-imagem">
+        <div class="descricao">
+          <h2>Rede Pernanbucana de boi diversas cores</h2>
+          <p>Código: <span class="codigo">003</span></p>
+          <p>Rede em diversas cores</p>
+          <p>Preço: R$ <span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="sortido">azul/Branco</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">branco/verm.</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Azul claro</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Verm/Preto</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">verde</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">vermelho</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">bege</button>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 5 -->
+      <div class="produto" data-categoria="plasticos" data-subcategoria="" data-codigo="003">
+        <img src="./Image/kit10.jpg" alt="Fone de Ouvido Bluetooth" class="produto-imagem">
+        <div class="descricao">
+          <h2>Kit vazilha para ingredientes diversos modelos e tamanhos</h2>
+          <p>Código: <span class="codigo">003</span></p>
+          <p>Kit com diversas cores e modelos</p>
+          <p>Preço: R$ <span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="sortido">Modelo 1</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Modelo 2</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Modelo 3</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Modelo 4</button>
+            <button class="subcategoria-btn" data-subcategoria="sortido">Modelo 5</button>
+          </div>
+        </div>
+      </div>
+      <!-- Produto 3 -->
+      <div class="produto" data-categoria="plasticos" data-subcategoria="" data-codigo="003">
+        <img src="./Image/kit talher de plasticocozinha.jpg" alt="Fone de Ouvido Bluetooth" class="produto-imagem">
+        <div class="descricao">
+          <h2>Kit talheres de plástico</h2>
+          <p>Código: <span class="codigo">003</span></p>
+          <p>Pote com diversos talheres em cores variadas</p>
+          <p>Preço: R$ <span class="preco">Consultar</span></p>
+          <div class="subcategorias">
+            <button class="subcategoria-btn" data-subcategoria="sortido">sortido</button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Mensagem de feedback -->

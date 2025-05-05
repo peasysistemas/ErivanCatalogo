@@ -116,7 +116,14 @@ function abrirModalSubcategoria(produtoElement, subcategoria) {
 const fotosSubcategorias = {
   "001": {
     Metal: "Image/product/canivetemetal.jpg",
-    Madeira: "Image/product/canivetecabomadeira.jpg"
+    Metal2:"Image/product/canivete metal 2.jpeg",
+    Metal3:"Image/product/canivete metal 3.jpeg",
+    Madeira: "Image/product/canivetecabomadeira.jpg",
+    CaniveteFaca: "Image/product/Canivete Faca.jpeg",
+    Canivetecabodecorado: "Image/product/canivete cabo decorado.jpeg",
+    Canivetecabodeosso: "Image/product/canivete cabo de madeira (2).jpeg",
+    Canivetecabodemadeira2: "Image/product/cabo de madeira.jpeg",
+    Cutelo: "Image/product/Cutelo.jpeg",
   },
   "002": {
     Vermelho: "Image/product/fotorede.jpg",
@@ -133,6 +140,7 @@ const fotosSubcategorias = {
   },
   "003": {
     Sortido: "Image/product/kit talher de plasticocozinha.jpg",
+    Sortido2: "Image/product/kit talher de plasticocozinha 02.jpeg",
   },
   "004": {
     Sortidos: "Image/product/kit10vasilhas.jpg",
@@ -162,6 +170,7 @@ const fotosSubcategorias = {
     Simples: "Image/product/capadecelular de couro.jpg",
     Bainha: "Image/product/capadecelcombainha.jpg",
     Bainha2: "Image/product/capadecelularcomcanivete.jpg",
+    Bainha3: "Image/product/capa de couro.jpeg"
   },
   "010": {
     Sortido: "Image/product/tapetesala.jpg",
@@ -182,6 +191,121 @@ const fotosSubcategorias = {
   "014": {
     Sortido: "Image/product/fonesdeouvidosortidos.jpg",
   },
+  "015": {
+    Modelo1: "Image/product/fonedeouvidosemfio.jpg",
+    Modelo2: "Image/product/Fone de ouvido sem fio 2.jpeg",
+  },
+  "016": {
+    Preto: "Image/product/bem vindo preto.jpeg",
+    Vermelho: "Image/product/bem vindo vermelho.jpeg",
+    Marrom:"Image/product/bem vindo marrom.jpeg",
+  },
+  "017":{
+    Preto: "Image/product/Tapete testurizado preto.jpeg",
+    Vermelho: "Image/product/Tapete testurizado vermelho.jpeg",
+    Azul: "Image/product/Tapete testurizado azul.jpeg",
+    vinho: "Image/product/Tapete testurizado vinho.jpeg",
+  },
+  "018":{
+    Preto:"Image/product/tapete estreito preto.jpeg",
+    Pink:"Image/product/tapete estreito pink.jpeg",
+  },
+  "019":{
+    Mod1:"Image/product/Cadeira suspensa 01.jpeg",
+    Mod2:"Image/product/cadeira suspensa 02.jpeg",
+    Mod3:"Image/product/cadeira suspensa 03.jpeg",
+  },
+  "020":{
+    Rosa:"Image/product/kit tapetes para banheiro rosa.jpeg",
+    Verde:"Image/product/kittapetespara banheiroverde.jpeg",
+    Vermelho:"Image/product/kit tapetes para banheiro vermelho.jpeg",
+    Vermelho2:"Image/product/kit tapetes para banheiro vermelho 02.jpeg",
+    Preto:"Image/product/kittapetesparabanheiropreto.jpeg",
+  },
+  "021":{
+    AzulEscuro:"Image/product/casal azul 02.jpeg",
+    Azul:"Image/product/casal azul.jpeg",
+    EstampasDeBorboletas:"Image/product/casal estampas borboletas.jpeg",
+    MarromEstampaFloral:"Image/product/casal marrom com estampa.jpeg",
+    RosaComEstampa:"Image/product/casal rosa com estampa.jpeg",
+    Rosa:"Image/product/casal rosa.jpeg",
+    Verde:"Image/product/casal verde.jpeg",
+  },
+  "022":{
+    Verde:"Image/product/Triturador verde.jpeg",
+    Branco:"Image/product/triturador branco.jpeg",
+  },
+  "023":{
+    Sortido:"Image/product/Panos de prato.jpeg"
+  },
+  "024":{
+    Branco:"Image/product/Edredom branco.jpeg",
+    Preto:"Image/product/Edredom preto.jpeg",
+    Vermelho:"Image/product/Edredom Vermelho.jpeg",
+  },
+  "025":{
+    JBLmini:"Image/product/caixa de som jbl mini.jpeg",
+    Colorida:"Image/product/caixa de som colorida.jpeg",
+    AProvaDágua:"Image/product/caixa de som a prova d´agua.jpeg",
+    RádioClassico:"Image/product/caixa de som tipo rádio.jpeg",
+    colorida02:"Image/product/caixa de som colorida2.jpeg"
+  },
+  "026":{
+    Sortido:"Image/product/tapete para cosinha (2).jpeg"
+  },
+  "027":{
+    AnalógicoAzul:"Image/product/Relógio analogico.jpeg",
+    DigitalAzul:"Image/product/Relogio digital azul.jpeg",
+    DigitalCamuflado:"Image/product/Relógio digital camuflado.jpeg",
+    DigitalPrateado:"Image/product/Relógio digital prateado.jpeg",
+    DgitalPreto:"Image/product/Relógiodigital preto.jpeg",
+  },
+  "028":{
+    Branca:"Image/product/meia branca.jpeg",
+    Preta:"Image/product/meia preta.jpeg",
+    DiversasCanoLongo:"Image/product/meias cores variadas cano longo.jpeg",
+    DiversasCores:"Image/product/meias cores variadas.jpeg",
+  },
+  "029":{
+    Lacoste: "Image/product/cueca lacoste.jpeg",
+    CalvinKlein: "Image/product/cueca ck.jpeg",
+  },
+  "030":{
+    Maquinadenarbear:"Image/product/maquina de barbear.jpeg"
+  },
+  "031":{
+   Azul:"Image/product/lençol azul.jpeg",
+   Branco:"Image/product/lençol branco.jpeg",
+   Verde:"Image/product/lençol verde.jpeg",
+  },
+  "032":{
+    Sortido01:"Image/product/cinto 02.jpeg",
+    Sortido02:"Image/product/cinto.jpeg",
+   },
+   "033":{
+    Afiadordefacas:"Image/product/afiador.jpeg",
+   },
+   "034":{
+      Modelo01:"Image/product/cadeira mod 1.jpeg",
+      Modelo02:"Image/product/cadeira mod 2.jpeg",
+      Banqueta:"Image/product/cadeira mod 3.jpeg",
+   },
+   "035":{
+    Lanternademão:"Image/product/Lanterna de mão.jpeg",
+    Lanternadecabeça:"Image/product/Lanterna de Cabeça.jpeg",
+   },
+   "036":{
+    Aparadordepelosdonariz:"Image/product/aparador de pelos do naris.jpeg",
+   },
+   "037":{
+    Sortido:"Image/product/cactos que dançam.jpeg",
+   },
+   "038":{
+    Carregadorportatil:"Image/product/carregador portatil.jpeg",
+   },
+   "039":{
+    Suporteparacelular:"Image/product/suport universal para celular.jpeg",
+   },
 };
 
 // Função para renderizar os produtos
@@ -189,12 +313,13 @@ function renderizarProdutos() {
   const produtos = [
     {
       codigo: "001",
-      nome: "Canivete Metal",
-      descricao: "Canivete Metalico",
+      nome: "Canivetes Variados",
+      descricao: "Caniveted Variados",
       preco: "Consultar",
       imagem: "Image/product/canivetemetal.jpg",
-      categorias: ["Ultensilios"],
-      subcategorias: ["Metal", "Madeira"],
+      categorias: ["facas"],
+      subcategorias: ["Metal","Metal2","Metal3", "Madeira","CaniveteFaca",
+        "Canivetecabodecorado","Canivetecabodeosso","Canivetecabodemadeira2","Cutelo"],
     },
     {
       codigo: "002",
@@ -202,7 +327,7 @@ function renderizarProdutos() {
       descricao: "Rede bucho de boi cores variadas",
       preco: "Consultar",
       imagem: "Image/product/redebuchodeboititle.jpg",
-      categorias: ["Redes"],
+      categorias: ["rede"],
       subcategorias: ["Vermelho", "Azulmarrom", "Begepreto", "Azulbranco", "Branco","Cinza","Marrom","Vermelha","Vermelhabranco","Vinho","XadrezMarrom"],
     },
     {
@@ -211,8 +336,8 @@ function renderizarProdutos() {
       descricao: "Kit talheres de cozinha de Plastico sortidos.",
       preco: "Consultar",
       imagem: "Image/product/kit talher de plasticocozinha.jpg",
-      categorias: ["Cozinha"],
-      subcategorias: ["Sortido"],
+      categorias: ["cozinha"],
+      subcategorias: ["Sortido","Sortido2"],
     },
     {
       codigo: "004",
@@ -220,7 +345,7 @@ function renderizarProdutos() {
       descricao: "Kit com 10 vasilhas em cores variadas",
       preco: "Consultar",
       imagem: "Image/product/kit10vasilhas.jpg",
-      categorias: ["Plasticos"],
+      categorias: ["plasticos"],
       subcategorias: ["Sortidos", "Roxo", "Vermelho", "Preto"],
     },
     {
@@ -229,7 +354,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha com 10 vasilhas",
       preco: "Consultar",
       imagem: "Image/product/kit10.jpg",
-      categorias: ["Plasticos"],
+      categorias: ["plasticos"],
       subcategorias: ["Sortidos", "Sortidos2"],
     },
     {
@@ -238,7 +363,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha 5 peças",
       preco: "Consultar",
       imagem: "Image/product/kitcozinha5vazilhas.jpg",
-      categorias: ["Plasticos"],
+      categorias: ["plasticos"],
       subcategorias: ["Kit1", "Kit2", "Kit3", "Kit4", "Kit5"],
     },
     {
@@ -247,7 +372,7 @@ function renderizarProdutos() {
       descricao: "Kit vasilha uso geral",
       preco: "Consultar",
       imagem: "Image/product/kitvazilhacom3und.jpg",
-      categorias: ["Plasticos"],
+      categorias: ["plasticos"],
       subcategorias: ["Kitcom3", "Kitcom2",],
     },
     {
@@ -256,7 +381,7 @@ function renderizarProdutos() {
       descricao: "Redes de cores variadas",
       preco: "Consultar",
       imagem: "Image/product/variasredes.jpg",
-      categorias: ["Redes"],
+      categorias: ["rede"],
       subcategorias: ["Sortido"],
     },
     {
@@ -265,8 +390,8 @@ function renderizarProdutos() {
       descricao: "Capa para celular de couro com e sem a bainha de canivete",
       preco: "Consultar",
       imagem: "Image/product/capadecelularcomcanivete.jpg",
-      categorias: ["Ultensilios"],
-      subcategorias: ["Simples", "Bainha", "Bainha2"],
+      categorias: ["eletronicos"],
+      subcategorias: ["Simples", "Bainha", "Bainha2","Bainha3"],
     },
     {
       codigo: "010",
@@ -274,7 +399,7 @@ function renderizarProdutos() {
       descricao: "Tapete de sala 2,00X2,40mt",
       preco: "Consultar",
       imagem: "Image/product/tapetesala.jpg",
-      categorias: ["Ultensilios"],
+      categorias: ["item"],
       subcategorias: ["Sortido"],
     },
     {
@@ -283,7 +408,7 @@ function renderizarProdutos() {
       descricao: "Conjunto de passadeira de cozinha",
       preco: "Consultar",
       imagem: "Image/product/passadeiradecozinha.jpg",
-      categorias: ["Cozinha"],
+      categorias: ["cozinha"],
       subcategorias: ["Sortido"],
     },
     {
@@ -292,7 +417,7 @@ function renderizarProdutos() {
       descricao: "Kit capa de sofá com 2  e 3 lugares",
       preco: "Consultar",
       imagem: "Image/product/capasofaazul.jpg",
-      categorias: ["Ultensilios"],
+      categorias: ["item"],
       subcategorias: ["Bege", "Azul"],
     },
     {
@@ -301,7 +426,7 @@ function renderizarProdutos() {
       descricao: "Cadeirinha suspensa infantil diversas cores",
       preco: "Consultar",
       imagem: "Image/product/cadeirinhainfantil1.jpg",
-      categorias: ["Ultensilios"],
+      categorias: ["item"],
       subcategorias: ["Mod1", "Mod2", "Mod3", "Mod4"],
     },
     {
@@ -310,7 +435,7 @@ function renderizarProdutos() {
       descricao: "Fone de ouvido com fio",
       preco: "Consultar",
       imagem: "Image/product/fonesdeouvidosortidos.jpg",
-      categorias: ["Eletronicos"],
+      categorias: ["eletronicos"],
       subcategorias: ["Sortido"],
     },
     {
@@ -319,9 +444,224 @@ function renderizarProdutos() {
       descricao: "Fone de ouvido sem fio",
       preco: "Consultar",
       imagem: "Image/product/fonedeouvidosemfio.jpg",
-      categorias: ["Eletronicos"],
+      categorias: ["eletronicos"],
+      subcategorias: ["Modelo1","Modelo2"],
+    },
+    {
+      codigo: "016",
+      nome: "Tapete Bem Vindo",
+      descricao: "Tapete bem vindo",
+      preco: "Consultar",
+      imagem: "Image/product/bem vindo vermelho.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Preto","Vermelho","Marrom"],
+    },
+    {
+      codigo: "017",
+      nome: "Tapete sala testurizado",
+      descricao: "Tapete sala testurizado",
+      preco: "Consultar",
+      imagem: "Image/product/Tapete testurizado preto.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Preto","Vermelho","Azul","vinho"],
+    },
+    {
+      codigo: "018",
+      nome: "Tapete estreito felpudo",
+      descricao: "Tapete estreito felpudo",
+      preco: "Consultar",
+      imagem: "Image/product/tapete estreito preto.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Preto","Pink"],
+    },
+    {
+      codigo: "019",
+      nome: "Cadeira suspensa adulto",
+      descricao: "Cadeira suspensa adulto",
+      preco: "Consultar",
+      imagem: "Image/product/Cadeira suspensa 01.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Mod1", "Mod2", "Mod3"],
+    },
+    {
+      codigo: "020",
+      nome: "kite de tapetes para banheiro",
+      descricao: "tapetes para benheiro",
+      preco: "Consultar",
+      imagem: "Image/product/kit tapetes para banheiro rosa.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Rosa", "Verde", "Vermelho","Vermelho2","Preto"],
+    },
+    {
+      codigo: "021",
+      nome: "Roupa de cama (casal)",
+      descricao:"Roupa de cama",
+      preco: "Consultar",
+      imagem: "Image/product/casal estampas borboletas.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Azul","AzulEscuro","EstampasDeBorboletas","MarromEstampaFloral","RosaComEstampa","Rosa","Verde",],
+    },
+    {
+      codigo: "022",
+      nome: "Triturador de Verduras",
+      descricao: "Triturador de Veduras",
+      preco: "Consultar",
+      imagem: "Image/product/triturador.jpeg",
+      categorias: ["cozinha"],
+      subcategorias: ["Branco", "Verde"],
+    },
+    {
+      codigo: "023",
+      nome: "Pano de prato",
+      descricao: "Panode prato estampado",
+      preco: "Consultar",
+      imagem: "Image/product/Panos de prato.jpeg",
+      categorias: ["cozinha"],
       subcategorias: ["Sortido"],
     },
+    {
+      codigo: "024",
+      nome: "Edredom",
+      descricao: "Edredom",
+      preco: "Consultar",
+      imagem: "Image/product/Edredom Vermelho.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Branco","Preto","Vermelho"],
+    },
+    {
+      codigo: "025",
+      nome: "Caixinha de Som",
+      descricao: "Caixinhas de som variadas",
+      preco: "Consultar",
+      imagem: "Image/product/caixa de som jbl mini.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["JBLmini","Colorida","AProvaDágua","RádioClassico","colorida02"],
+    },
+    {
+      codigo: "026",
+      nome: "Tapetes Para Cosinha",
+      descricao: "Tapetes para cosinha",
+      preco: "Consultar",
+      imagem: "Image/product/tapete para cosinha.jpeg",
+      categorias: ["cozinha"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "027",
+      nome: "Relógios",
+      descricao: "Relógios variados",
+      preco: "Consultar",
+      imagem: "Image/product/Relógio analogico.jpeg",
+      categorias: ["item"],
+      subcategorias: ["AnalógicoAzul","DigitalAzul","DigitalCamuflado","DigitalPrateado","DgitalPreto"],
+    },
+    {
+      codigo: "028",
+      nome: "Meias",
+      descricao: "Meias variads",
+      preco: "Consultar",
+      imagem: "Image/product/meias cores variadas cano longo.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Branca","Preta","DiversasCanoLongo","DiversasCores"],
+    },
+    {
+      codigo: "029",
+      nome: "Cuecas",
+      descricao: "Cuecas Variadas",
+      preco: "Consultar",
+      imagem: "Image/product/cueca ck.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Lacoste","CalvinKlein"],
+    },
+    {
+      codigo: "030",
+      nome: "Maquina de barbear",
+      descricao: "Maquina de barbear",
+      preco: "Consultar",
+      imagem: "Image/product/maquina de barbear.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["Maquinadenarbear"],
+    },
+    {
+      codigo: "031",
+      nome: "Lençol de Cama",
+      descricao: "lençol para cama",
+      preco: "Consultar",
+      imagem: "Image/product/lençol sortido.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Azul","Branco","Verde"],
+    },
+    {
+      codigo: "032",
+      nome: "Cinto",
+      descricao: "Cintos variados",
+      preco: "Consultar",
+      imagem: "Image/product/cinto.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Sortido01","Sortido02"],
+    },
+    {
+      codigo: "033",
+      nome: "Afiador de Faca",
+      descricao: "Afiador de facas",
+      imagem: "Image/product/afiador 02.jpeg",
+      categorias: ["cozinha"],
+      subcategorias: ["Afiadordefacas"],
+    },
+    {
+      codigo: "034",
+      nome: "Cadeiras de balanço e banqueta",
+      descricao: "Cadeiras de balanço e banqueta",
+      imagem: "Image/product/cadeira mod 1.jpeg",
+      categorias: ["item"],
+      subcategorias: ["Modelo01","Modelo02","Banqueta"],
+    },
+    {
+      codigo: "035",
+      nome: "Lanterna",
+      descricao: "Lanterna de mão e de cabeçao",
+      imagem: "Image/product/Lanterna de mão.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["Lanternademão","Lanternadecabeça"],
+    },
+    {
+      codigo: "036",
+      nome: "Aparador de pelos do nariz",
+      descricao: "Aparador de pelos do nariz",
+      preco: "Consultar",
+      imagem: "Image/product/aparador de pelos do naris.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["Aparadordepelosdonariz"],
+    },
+    {
+      codigo: "037",
+      nome: "Cactos que cantam e dançam",
+      descricao: "Cactos que cantam e dançam",
+      preco: "Consultar",
+      imagem: "Image/product/cactos que dançam.jpeg",
+      categorias: ["brinquedo"],
+      subcategorias: ["Sortido"],
+    },
+    {
+      codigo: "038",
+      nome: "Carregador Portatil",
+      descricao: "Carregador portatil 5000mAh",
+      preco: "Consultar",
+      imagem: "Image/product/carregador portatil.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["Carregadorportatil"],
+    },
+    {
+      codigo: "039",
+      nome: "Suporte para celular",
+      descricao: "Suporte universal para celular",
+      preco: "Consultar",
+      imagem: "Image/product/suport universal para celular.jpeg",
+      categorias: ["eletronicos"],
+      subcategorias: ["Suporteparacelular"],
+    },
+   
+   
     // Adicione mais produtos aqui
   ];
 
