@@ -317,7 +317,7 @@ function renderizarProdutos() {
       descricao: "Caniveted Variados",
       preco: "Consultar",
       imagem: "Image/product/canivetemetal.jpg",
-      categorias: ["facas"],
+      categorias: ["faca"],
       subcategorias: ["Metal","Metal2","Metal3", "Madeira","CaniveteFaca",
         "Canivetecabodecorado","Canivetecabodeosso","Canivetecabodemadeira2","Cutelo"],
     },
@@ -345,7 +345,7 @@ function renderizarProdutos() {
       descricao: "Kit com 10 vasilhas em cores variadas",
       preco: "Consultar",
       imagem: "Image/product/kit10vasilhas.jpg",
-      categorias: ["plasticos"],
+      categorias: ["plastico"],
       subcategorias: ["Sortidos", "Roxo", "Vermelho", "Preto"],
     },
     {
@@ -354,7 +354,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha com 10 vasilhas",
       preco: "Consultar",
       imagem: "Image/product/kit10.jpg",
-      categorias: ["plasticos"],
+      categorias: ["plastico"],
       subcategorias: ["Sortidos", "Sortidos2"],
     },
     {
@@ -363,7 +363,7 @@ function renderizarProdutos() {
       descricao: "Kit cozinha 5 peças",
       preco: "Consultar",
       imagem: "Image/product/kitcozinha5vazilhas.jpg",
-      categorias: ["plasticos"],
+      categorias: ["plastico"],
       subcategorias: ["Kit1", "Kit2", "Kit3", "Kit4", "Kit5"],
     },
     {
@@ -372,7 +372,7 @@ function renderizarProdutos() {
       descricao: "Kit vasilha uso geral",
       preco: "Consultar",
       imagem: "Image/product/kitvazilhacom3und.jpg",
-      categorias: ["plasticos"],
+      categorias: ["plastico"],
       subcategorias: ["Kitcom3", "Kitcom2",],
     },
     {
